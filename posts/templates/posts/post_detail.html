@@ -1,6 +1,8 @@
 <!--single post TITLE, AUTHOR, DATE, FULL CONTENT-->
 {% extends "posts/base.html" %}
-{% block title %} Post Details {% endblock %}
+{% block title %}Post Details{% endblock %}
 {% block content %}
-<p>This is the post details page</p>
+<h1>{{ post.title }}</h1>
+<p>{{ post.author }} | {{ post.created_at }}</p>
+<p>{{ post.content }}</p>
 {% endblock %}

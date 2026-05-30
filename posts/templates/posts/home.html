@@ -1,6 +1,8 @@
 <!--all post TITLE, NAME, DATE-->
 {% extends "posts/base.html" %}
-{% block title %} Home {% endblock %}
+{% block title %}Home{% endblock %}
 {% block content %}
-<p>This is the home page</p>
+{% for post in posts %}
+<p><a href="/post/{{ post.pk }}/">{{ post.title }}</a> {{ post.author }} {{ post.created_at }}</p>
+{% endfor %}
 {% endblock %}
