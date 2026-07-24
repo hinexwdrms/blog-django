@@ -5,4 +5,8 @@
 <h1>{{ post.title }}</h1>
 <p>{{ post.author }} | {{ post.created_at }}</p>
 <p>{{ post.content }}</p>
+{% if user == post.author %}
+<a href="/post/{{ post.pk }}/edit/">Edit</a>
+<a href="/post/{{ post.pk }}/delete/">Delete</a>
+{% endif %}
 {% endblock %}

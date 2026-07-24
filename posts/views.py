@@ -23,4 +23,25 @@ def create_post(request):
     else:
         form = PostForm() # if get request
     return render(request, 'posts/create_post.html', {'form':form})
-            
+
+def edit_post(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    if request.user != post.author: #check if logged in user is author
+        return redirect('home')
+    if request.method == 'POST':
+        form = PostForm(request.POST, instance=post) 
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    else:
+        form = PostForm(instance=post) #instance tells to update the existing form instead of creating
+    return render(request, 'posts/edit_post.html', {'form': form})
+
+def delete_post(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    if request.user != post.author:
+        return redirect('home')
+    if request.method == 'POST':
+        post.delete()
+        return redirect('home')
+    return render(request, 'posts/delete_post.html', {'post': post})
