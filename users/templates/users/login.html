@@ -1,9 +1,26 @@
-{% extends 'posts/base.html' %}
+{% extends 'base.html' %}
+{% block title %}Login{% endblock %}
 {% block content %}
-<form method="POST">
-    {% csrf_token %}
-    <input type="text" name="username" placeholder="Username"> <br>
-    <input type="password" name="password" placeholder="Password"> <br>
-    <button type="submit">Login</button>
-</form>
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h2>Login</h2>
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <input type="text" name="username" class="form-control" placeholder="Username">
+                    </div>
+                    <div class="mb-3">
+                        <input type="password" name="password" class="form-control" placeholder="Password">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                    <a href="/register/" class="btn btn-secondary">No account? Register</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 {% endblock %}

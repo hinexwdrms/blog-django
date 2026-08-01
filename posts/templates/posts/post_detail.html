@@ -1,12 +1,20 @@
 <!--single post TITLE, AUTHOR, DATE, FULL CONTENT-->
-{% extends "posts/base.html" %}
-{% block title %}Post Details{% endblock %}
+{% extends 'base.html' %}
+{% block title %}{{ post.title }}{% endblock %}
 {% block content %}
-<h1>{{ post.title }}</h1>
-<p>{{ post.author }} | {{ post.created_at }}</p>
-<p>{{ post.content }}</p>
-{% if user == post.author %}
-<a href="/post/{{ post.pk }}/edit/">Edit</a>
-<a href="/post/{{ post.pk }}/delete/">Delete</a>
-{% endif %}
+
+<div class="card">
+    <div class="card-body">
+        <h1 class="card-title">{{ post.title }}</h1>
+        <p class="text-muted">By {{ post.author }} | {{ post.created_at }}</p>
+        <hr>
+        <p class="card-text">{{ post.content }}</p>
+        {% if user == post.author %}
+        <a href="/post/{{ post.pk }}/edit/" class="btn btn-warning">Edit</a>
+        <a href="/post/{{ post.pk }}/delete/" class="btn btn-danger">Delete</a>
+        {% endif %}
+        <a href="/" class="btn btn-secondary">Back</a>
+    </div>
+</div>
+
 {% endblock %}

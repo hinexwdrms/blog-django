@@ -1,8 +1,17 @@
 <!--all post TITLE, NAME, DATE-->
-{% extends "posts/base.html" %}
+{% extends 'base.html' %}
 {% block title %}Home{% endblock %}
 {% block content %}
+
+<h2 class="mb-4">Latest Posts</h2>
+
 {% for post in posts %}
-<p><a href="/post/{{ post.pk }}/">{{ post.title }}</a> {{ post.author }} {{ post.created_at }}</p>
+<div class="card mb-3">
+    <div class="card-body">
+        <h5 class="card-title"><a href="/post/{{ post.pk }}/">{{ post.title }}</a></h5>
+        <p class="card-text text-muted">By {{ post.author }} | {{ post.created_at }}</p>
+    </div>
+</div>
 {% endfor %}
+
 {% endblock %}

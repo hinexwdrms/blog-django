@@ -1,9 +1,17 @@
-{% extends 'posts/base.html' %}
+{% extends 'base.html' %}
+{% block title %}Delete Post{% endblock %}
 {% block content %}
-<p>Are you sure you want to delete "{{ post.title }}"?</p>
-<form method="POST">
-    {% csrf_token %}
-    <button type="submit">Yes, Delete</button>
-    <a href="/">Cancel</a>
-</form>
+
+<div class="card">
+    <div class="card-body">
+        <h2>Delete Post</h2>
+        <p>Are you sure you want to delete <strong>{{ post.title }}</strong>?</p>
+        <form method="POST">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Yes, Delete</button>
+            <a href="/" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</div>
+
 {% endblock %}
